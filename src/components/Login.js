@@ -21,21 +21,24 @@ class Login extends Component {
 
   componentWillMount() {
     
-    if (this.isLoggedin())
-      this.history.push("/")
-    else
-    this.history.push("/home")
+    // if (this.isLoggedin())
+    //   this.history.push("/")
+    // else
+    // this.history.push("/home")
   }
 
-  login(email, password){    
+  login(email, password){  
+    console.log(auth)
     auth.logInFirebase(email, password)
-    .then((login)=>{
-      sessionStorage.setItem("token", login.data.token);
-      this.history.push("/home/")
-    })
-    .catch(()=>{
-      alert('Usuario ou senha inválidos')  
-    })    
+    this.history.push("/home/")
+    // .then((login)=>{
+    //   console.log(login)
+    //   sessionStorage.setItem("token", login.data.token);
+    //   
+    // })
+    // .catch(()=>{
+    //   alert('Usuario ou senha inválidos')  
+    // })    
   }
 
   handleSubmit(event, errors, values) {

@@ -5,16 +5,15 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import Login from './components/Login';
 import Home from './components/Home';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 ReactDOM.render(
 <Router>    
-    <Switch>
-        <Route path={'/'} component={App}/>
-        <Route path={'/login'} component={Login}/>
+    <Switch>        
+        <Route path={'/login'} component={App}/>
         <Route path={'/home'} component={Home}/>
+        <Route path={'/'} component={App}/>
     </Switch>
 </Router>, document.getElementById('root'));
 

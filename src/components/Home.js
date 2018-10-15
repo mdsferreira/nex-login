@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import createHistory from "history/createBrowserHistory";
 import { Row, Col, Container, Card, CardBody, Button, Label, Form, FormGroup } from 'reactstrap'
 import '../css/Login.css';
-
+import {Link} from 'react-router-dom';
 import { auth } from '../firebase';
 
 class Home extends Component {
@@ -13,17 +13,18 @@ class Home extends Component {
   }
 
   isLoggedin = () => {
-    return sessionStorage.getItem("token");
+    return sessionStorage.getItem("user");
   }
 
   componentWillMount() {
-    let history = createHistory();
-    if (this.isLoggedin());
-      history.push("/");
+    // let history = createHistory();
+     console.log("log")
+    // if (this.isLoggedin());
+    //   history.push("/");
   }
 
   logout(){
-    auth.doSignOut();
+    auth.logOutFirebase();
     let history = createHistory();
     history.push("/");
   }
@@ -34,7 +35,9 @@ class Home extends Component {
     } = this.props;
     return (      
       <div>       
-        <button type="button" onClick={this.logout} > LogOut </button>
+        <button type="button" onClick={this.logout} > LogOut 
+        <Link to={"/login"} ><i className="fa fa-external-link"></i></Link>
+        </button>
       </div>      
     )
   }
